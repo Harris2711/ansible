@@ -13,7 +13,7 @@ pipeline {
         }
         stage('email'){
             steps{
-                emailext body: '"Dear team pipeline is ${currentBuild.result} please check ${BUILD_URL} or PFA build log", compressLog: false,', 
+                emailext attachLog: true, body: '"Dear team pipeline is ${currentBuild.result} please check ${BUILD_URL} or PFA build log"', 
                 subject: 'Jenkins build notification: $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS', to: 'mohammedharris556@gmail.com'
             }
         }
