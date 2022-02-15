@@ -3,5 +3,5 @@
   tasks:
    - name: "deploy"
      copy:
-      src: index.html
+      src: index.htm
       dest: /var/www/html/
