@@ -15,7 +15,7 @@ pipeline {
             steps{
                 emailext attachLog: true, body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
 
-                Check console output at $BUILD_URL to view the results.''', subject: 'Dear team pipeline is sucess', to: 'mohammedharris556@gmail.com'
+                Check console output at $BUILD_URL to view the results.''', compressLog: true, subject: 'Dear team pipeline is sucess', to: 'mohammedharris556@gmail.com'
             }
         }
     }
