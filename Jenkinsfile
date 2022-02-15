@@ -13,9 +13,9 @@ pipeline {
         }
         stage('email'){
             steps{
-                emailext attachLog: true, body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
-
-                Check console output at $BUILD_URL to view the results.''', compressLog: true, subject: 'Dear team pipeline is sucess', to: 'mohammedharris556@gmail.com'
+                emailext to: 'mohammedharris556@gmail.com',
+                attachLog: true, body: "Dear team pipeline is ${currentBuild.result} please check ${BUILD_URL} or PFA build log", compressLog: false,
+                subject: "Jenkins Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}"
             }
         }
     }
