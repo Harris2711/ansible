@@ -1,7 +1,11 @@
-- hosts: all
-  become: true
+---
+- hosts: localhost
   tasks:
-   - name: "deploy"
-     copy:
-      src: index.html
-      dest: /var/www/html/
+     - name: Deploy Grafana chart using values files on target
+       kubernetes.core.helm:
+           name: webapp
+           chart_ref: /home/ubuntu/sample/
+           release_namespace: default
+           release_state: present
+           values_files:
+             - /home/ubuntu/sample/values.yaml
