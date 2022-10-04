@@ -10,12 +10,5 @@ pipeline {
             steps {
                 ansiblePlaybook credentialsId: 'ansible', installation: 'ansible2', inventory: 'web.inv', playbook: 'ansible.yml'
             }
-        }
-        stage('email'){
-            steps{
-                emailext attachLog: true, body: '"Dear team pipeline is ${currentBuild.result} please check ${BUILD_URL} or PFA build log"', 
-                subject: 'Jenkins build notification: $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS', to: 'mohammedharris556@gmail.com'
-            }
-        }
     }
 }
